@@ -61,7 +61,7 @@ export const CrudForm = ({createData,updateData,dataToEdit,setDataToEdit}) => {
         </div>
         <br></br>
         <div className='d-grid gap-2'>
-          <input className="btn btn-success" type="submit" value="Enviar"/>
+          <input className="btn btn-primary" type="submit" value="Enviar"/>
           <input className="btn btn-secondary mb-3" type="reset" value="Limpiar" onClick={handleReset}/>
         </div>
       </form>
