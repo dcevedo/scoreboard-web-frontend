@@ -1,23 +1,23 @@
 import React from "react";
-import CrudTableRow from "./CrudTableRow";
+import SportTableRow from "./SportTableRow";
 
-const CrudTable = ({ data, setDataToEdit, deleteData }) => {
+const SportTable = ({ data, setDataToEdit, deleteData }) => {
   return (
     <div className="table-responsive">
-      <h3>Tabla de Datos</h3>
+      {/* <h3>Tabla de Deportes</h3> */}
       <table className="table table-striped">
         <thead className="table-dark">
           <tr>
             <th>Nombre</th>
-            <th>Constelacion</th>
+            {/* <th>Lista</th> */}
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {data.length > 0 ? (
             data.map((el) => (
-              <CrudTableRow
-                key={el.id}
+              <SportTableRow
+                key={el._id}
                 el={el}
                 setDataToEdit={setDataToEdit}
                 deleteData={deleteData}
@@ -34,4 +34,4 @@ const CrudTable = ({ data, setDataToEdit, deleteData }) => {
   );
 };
 
-export default CrudTable;
+export default SportTable;
