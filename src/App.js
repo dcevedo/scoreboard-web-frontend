@@ -11,6 +11,7 @@ import PageHome from "./components/PageHome";
 import PageTeam from "./components/PageTeam";
 
 import { Container, Nav, Navbar } from "react-bootstrap";
+import PageRegister from "./components/PageRegister";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to="/teams">Equipos</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/register">Registro</Link>
+              </li>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -41,6 +45,7 @@ function App() {
         <Route exact path="/" element={<PageHome/>} />
         <Route exact path="/sports" element={<PageSport/>} />
         <Route exact path="/teams" element={<PageTeam/>} />
+        <Route exact path="/register" element={<PageRegister/>} />
       </Routes>
     </div>
   );

@@ -5,7 +5,7 @@ import TeamAddButton from "./TeamAddButton";
 import TeamForm from "./TeamForm";
 import TeamTable from "./TeamTable";
 import Loader from "./Loader";
-import Message from "./Message";
+import MessageError from "./MessageError";
 
 const PageTeam = () => {
   const [db, setDb] = useState(null);
@@ -130,7 +130,7 @@ const PageTeam = () => {
         />
       <hr></hr>
       {loading && <Loader/>}
-      {error && <Message/>}
+      {error && <MessageError/>}
       {db && <TeamTable
         data={db}
         setDataToEdit={setDataToEdit}

@@ -5,10 +5,10 @@ import SportAddButton from "./SportAddButton";
 import SportForm from "./SportForm";
 import SportTable from "./SportTable";
 import Loader from "./Loader";
-import Message from "./Message";
+import MessageError from "./MessageError";
 
 const PageSport = () => {
-  const [db, setDb] = useState(null);
+  const [data, setData] = useState(null);
   const [dataToEdit, setDataToEdit] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -21,10 +21,10 @@ const PageSport = () => {
     setLoading(true);
     helpHttp().get(url).then((res) => {
       if(!res.err){
-        setDb(res);
+        setData(res);
         setError(null)
       }else {
-        setDb(null);
+        setData(null);
         setError(res)
       }
       setLoading(false);
@@ -43,10 +43,10 @@ const PageSport = () => {
     api.post(url,options).then(res => {
       console.log(res);
       if(!res.err){
-      setDb([...db, res]);
+      setData([...data, res]);
       setError(null)
       }else {
-        setDb(null);
+        setData(null);
         setError(res)
       }
     });
@@ -63,11 +63,11 @@ const PageSport = () => {
     api.put(endpoint,options).then(res => {
       console.log(res);
       if(!res.err){
-        let newData = db.map((el) => (el._id === data._id ? data : el));
-        setDb(newData);
+        let newData = data.map((el) => (el._id === data._id ? data : el));
+        setData(newData);
         setError(null)
       }else {
-        setDb(null);
+        setData(null);
         setError(res)
       }
     });
@@ -87,11 +87,11 @@ const PageSport = () => {
       api.del(endpoint,options).then(res => {
         console.log(res);
         if(!res.err){
-          let newData = db.filter((el) => el._id !== _id);
-          setDb(newData);
+          let newData = data.filter((el) => el._id !== _id);
+          setData(newData);
           setError(null)
         }else {
-          setDb(null);
+          setData(null);
           setError(res)
         }
       })
@@ -114,9 +114,9 @@ const PageSport = () => {
         />
       <hr></hr>
       {loading && <Loader/>}
-      {error && <Message/>}
-      {db && <SportTable
-        data={db}
+      {error && <MessageError/>}
+      {data && <SportTable
+        data={data}
         setDataToEdit={setDataToEdit}
         deleteData={deleteData}
       />}
