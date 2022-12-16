@@ -24,7 +24,8 @@ export const helpHttp = () => {
         {
           err: true,
           status: res.status || "00",
-          statusText: res.statusText || "ocurrio un error",
+          statusText: res.statusText || "sin mensaje de status",
+          message: (await res.json()).message || "Sin mensaje",
         }));
     } catch (err) {
       return err;
