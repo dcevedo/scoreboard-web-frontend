@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const initialForm = {
   name: "",
@@ -9,7 +10,7 @@ const initialForm = {
   password: "",
 }
 const RegisterForm = ({ createUser, validated, setValidated,error, setError,success,setSuccess}) => {
-
+  const navigate = useNavigate();
   const [form, setForm] = useState(initialForm);
 
   useEffect(() => {
@@ -22,11 +23,10 @@ const RegisterForm = ({ createUser, validated, setValidated,error, setError,succ
 
   useEffect(() => {
     if(success){
-      setForm(initialForm);
-      setValidated(false);
+      navigate('/login', { replace: true });
     }
     setSuccess(null)
-  },[success,setSuccess,setValidated])
+  },[success,setSuccess,setValidated,navigate])
 
   const handleChange = (e) => {
     setForm({
