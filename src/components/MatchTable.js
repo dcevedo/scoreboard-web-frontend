@@ -1,7 +1,7 @@
 import React from "react";
 import MatchTableRow from "./MatchTableRow";
 
-const MatchTable = ({ data, setDataToEdit, deleteData }) => {
+const MatchTable = ({ data, setDataToEdit, deleteData, authorized }) => {
   return (
     <div className="table-responsive">
       <table className="table table-striped">
@@ -14,7 +14,7 @@ const MatchTable = ({ data, setDataToEdit, deleteData }) => {
             <th>Visitante</th>
             <th>Ganador</th>
             <th>Marcador</th>
-            <th>Acciones</th>
+            {authorized && <th>Acciones</th>}
           </tr>
         </thead>
         <tbody>
@@ -25,6 +25,7 @@ const MatchTable = ({ data, setDataToEdit, deleteData }) => {
                 el={el}
                 setDataToEdit={setDataToEdit}
                 deleteData={deleteData}
+                authorized={authorized}
               />
             ))
           ) : (

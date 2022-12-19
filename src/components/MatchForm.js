@@ -117,15 +117,15 @@ export const MatchForm = ({ createData, updateData, dataToEdit, setDataToEdit, s
           <Modal.Title>{dataToEdit ? "Editar" : "Agregar"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <label>Nombre :</label>
             <input className="form-control" type="text" name="name" placeholder='Nombre' onChange={handleChange} value={form.name} />
           </div>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <label>Fecha :</label>
             <input className="form-control" type="datetime-local" name="date" placeholder='Fecha' onChange={handleChange} value={form.date} />
           </div>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <label>Equipo Local:</label>
             <select className="form-control" name="home_team" onChange={handleSportChange} value={form.home_team._id}>
               <option value="default" disabled>Selecciona un equipo...</option>
@@ -134,7 +134,7 @@ export const MatchForm = ({ createData, updateData, dataToEdit, setDataToEdit, s
               ))}
             </select>
           </div>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <label>Equipo Visitante:</label>
             <select className="form-control" name="away_team" onChange={handleSportChange} value={form.away_team._id}>
               <option value="default" disabled>Selecciona un equipo...</option>
@@ -143,7 +143,7 @@ export const MatchForm = ({ createData, updateData, dataToEdit, setDataToEdit, s
               ))}
             </select>
           </div>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <label>Ganador(opcional):</label>
             <select className="form-control" name="winner" onChange={handleSportChange} value={form.winner._id}>
               <option value="default" disabled>Selecciona un equipo...</option>
@@ -152,15 +152,15 @@ export const MatchForm = ({ createData, updateData, dataToEdit, setDataToEdit, s
               ))}
             </select>
           </div>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <label>Puntaje Local:</label>
             <input className="form-control" type="number" name="home_score" placeholder='Puntaje Local' onChange={handleChange} value={form.home_score} />
           </div>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <label>Puntaje Visitante:</label>
             <input className="form-control" type="number" name="away_score" placeholder='Puntaje Visitante' onChange={handleChange} value={form.away_score} />
           </div>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <label>Estado:</label>
             <select className="form-control" name="status" onChange={handleChange} value={form.status}>
               <option value="scheduled">Programado</option>
