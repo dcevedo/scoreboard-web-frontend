@@ -8,7 +8,7 @@ import Loader from "./Loader";
 import MessageError from "./MessageError";
 
 const PageSport = () => {
-  const [data, setData] = useState(null);
+  const [db, setDB] = useState(null);
   const [dataToEdit, setDataToEdit] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -21,10 +21,10 @@ const PageSport = () => {
     setLoading(true);
     helpHttp().get(url).then((res) => {
       if(!res.err){
-        setData(res);
+        setDB(res);
         setError(null)
       }else {
-        setData(null);
+        setDB(null);
         setError(res)
       }
       setLoading(false);
@@ -43,10 +43,10 @@ const PageSport = () => {
     api.post(url,options).then(res => {
       console.log(res);
       if(!res.err){
-      setData([...data, res]);
+      setDB([...db, res]);
       setError(null)
       }else {
-        setData(null);
+        setDB(null);
         setError(res)
       }
     });
@@ -63,11 +63,11 @@ const PageSport = () => {
     api.put(endpoint,options).then(res => {
       console.log(res);
       if(!res.err){
-        let newData = data.map((el) => (el._id === data._id ? data : el));
-        setData(newData);
+        let newData = db.map((el) => (el._id === data._id ? res : el));
+        setDB(newData);
         setError(null)
       }else {
-        setData(null);
+        setDB(null);
         setError(res)
       }
     });
@@ -87,11 +87,11 @@ const PageSport = () => {
       api.del(endpoint,options).then(res => {
         console.log(res);
         if(!res.err){
-          let newData = data.filter((el) => el._id !== _id);
-          setData(newData);
+          let newData = db.filter((el) => el._id !== _id);
+          setDB(newData);
           setError(null)
         }else {
-          setData(null);
+          setDB(null);
           setError(res)
         }
       })
@@ -115,8 +115,8 @@ const PageSport = () => {
       <hr></hr>
       {loading && <Loader/>}
       {error && <MessageError/>}
-      {data && <SportTable
-        data={data}
+      {db && <SportTable
+        data={db}
         setDataToEdit={setDataToEdit}
         deleteData={deleteData}
       />}
