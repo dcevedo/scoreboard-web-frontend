@@ -17,27 +17,27 @@ const PageTeam = () => {
 
   let api = helpHttp();
   let url = process.env.REACT_APP_PROD_API_URL || "http://localhost:9000/api/v1";
-  
+
 
   useEffect(() => {
     helpHttp().get(`${url}/sports`).then((res) => {
-      if(!res.err){
+      if (!res.err) {
         setSportsList(res);
-      }else {
+      } else {
         setSportsList(null);
         setError(res)
       }
     });
   }, [url])
-  
+
 
   useEffect(() => {
     setLoading(true);
     helpHttp().get(`${url}/teams`).then((res) => {
-      if(!res.err){
+      if (!res.err) {
         setDb(res);
         setError(null)
-      }else {
+      } else {
         setDb(null);
         setError(res)
       }
@@ -45,22 +45,22 @@ const PageTeam = () => {
     });
   }, [url]);
 
-  
+
   const createData = (data) => {
     delete data._id;
     let options = {
       body: data,
       headers: {
-          "content-type":"application/json"
-        }
+        "content-type": "application/json"
+      }
     }
 
-    api.post(`${url}/teams`,options).then(res => {
+    api.post(`${url}/teams`, options).then(res => {
       console.log(res);
-      if(!res.err){
-      setDb([...db, res]);
-      setError(null)
-      }else {
+      if (!res.err) {
+        setDb([...db, res]);
+        setError(null)
+      } else {
         setDb(null);
         setError(res)
         console.log(res);
@@ -72,16 +72,16 @@ const PageTeam = () => {
     let options = {
       body: data,
       headers: {
-          "content-type":"application/json"
-        }
+        "content-type": "application/json"
+      }
     }
-    let endpoint =`${url}/teams/${data._id}`;
-    api.put(endpoint,options).then(res => {
-      if(!res.err){
+    let endpoint = `${url}/teams/${data._id}`;
+    api.put(endpoint, options).then(res => {
+      if (!res.err) {
         let newData = db.map((el) => (el._id === data._id ? res : el));
         setDb(newData);
         setError(null)
-      }else {
+      } else {
         setDb(null);
         setError(res)
       }
@@ -95,17 +95,17 @@ const PageTeam = () => {
     if (isConfirm) {
       let options = {
         headers: {
-            "content-type":"application/json"
-          }
+          "content-type": "application/json"
+        }
       }
-      let endpoint =`${url}/teams/${_id}`;
-      api.del(endpoint,options).then(res => {
+      let endpoint = `${url}/teams/${_id}`;
+      api.del(endpoint, options).then(res => {
         console.log(res);
-        if(!res.err){
+        if (!res.err) {
           let newData = db.filter((el) => el._id !== _id);
           setDb(newData);
           setError(null)
-        }else {
+        } else {
           setDb(null);
           setError(res)
         }
@@ -127,10 +127,13 @@ const PageTeam = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         sportsList={sportsList}
-        />
+      />
       <hr></hr>
-      {loading && <Loader/>}
-      {error && <MessageError/>}
+      {loading && <Loader />}
+      {error && <MessageError
+        msg={error.message}
+        title={error.statusText}
+      />}
       {db && <TeamTable
         data={db}
         setDataToEdit={setDataToEdit}

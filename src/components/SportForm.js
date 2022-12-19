@@ -68,7 +68,7 @@ export const SportForm = ({ createData, updateData, dataToEdit, setDataToEdit, s
           <Modal.Title>{dataToEdit ? "Editar" : "Agregar"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <label>Nombre :</label>
             <input className="form-control" type="text" name="name" placeholder='Nombre' onChange={handleChange} value={form.name} />
           </div>

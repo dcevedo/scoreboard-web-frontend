@@ -113,8 +113,11 @@ const PageSport = () => {
         setShowModal={setShowModal}
         />
       <hr></hr>
+      {error && <MessageError
+        msg={error.message}
+        title={error.statusText}
+      />}
       {loading && <Loader/>}
-      {error && <MessageError/>}
       {db && <SportTable
         data={db}
         setDataToEdit={setDataToEdit}
