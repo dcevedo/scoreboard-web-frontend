@@ -59,6 +59,8 @@ const authUserPages = (logout) => {
       </li><li className="nav-item">
         <Link className="nav-link" to="/teams">Equipos</Link>
       </li><li className="nav-item">
+        <Link className="nav-link" to="/matches">Eventos</Link>
+      </li><li className="nav-item">
         <Link to="/">
           <Button variant="outline-secondary" onClick={logout}>Logout</Button>
         </Link>

@@ -7,6 +7,7 @@ import "./index.css"
 import PageSport from "./components/PageSport";
 import PageHome from "./components/PageHome";
 import PageTeam from "./components/PageTeam";
+import PageMatch from "./components/PageMatch";
 
 import PageRegister from "./components/PageRegister";
 import PageNavbar from "./components/PageNavbar";
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/sports" element={<PageSport/>} />
         <Route exact path="/teams" element={<PageTeam/>} />
         <Route exact path="/register" element={<PageRegister/>} />
+        <Route exact path="/matches" element={<PageMatch currentUser={currentUser}/>} />
         <Route exact path="/login" element={<PageLogin/>} />
         <Route exact path="/logout" element={<PageLogout/>} />
       </Routes>
