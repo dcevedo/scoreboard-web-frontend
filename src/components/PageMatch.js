@@ -32,7 +32,12 @@ const PageTeam = ({ currentUser, isHome }) => {
     helpHttp().get(`${url}/teams`).then((res) => {
       if (!res.err) {
         setTeamsList(res);
-      } else {
+      } else if(res.length === 0) {
+        setError({error :
+          {message: "No hay equipos registrados"}
+      })
+      }
+      else {
         setTeamsList(null);
         setError(res)
       }
@@ -129,7 +134,7 @@ const PageTeam = ({ currentUser, isHome }) => {
       {authorized && <MatchAddButton
         setShowModal={setShowModal}
       />}
-      <MatchForm
+      {authorized &&<MatchForm
         createData={createData}
         updateData={updateData}
         dataToEdit={dataToEdit}
@@ -137,7 +142,7 @@ const PageTeam = ({ currentUser, isHome }) => {
         showModal={showModal}
         setShowModal={setShowModal}
         teamsList={teamsList}
-      />
+      />}
       <hr></hr>
       {loading && <Loader />}
       {error && <MessageError
