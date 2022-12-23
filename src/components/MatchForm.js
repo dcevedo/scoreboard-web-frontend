@@ -53,10 +53,10 @@ export const MatchForm = ({ createData, updateData, dataToEdit, setDataToEdit, s
   const dateParser = (oldDate) => {
     const date = new Date(oldDate);
     const year = date.getFullYear();
-    const month = `0${date.getMonth() + 1}`.slice(-2); // pad with leading zero
-    const day = `0${date.getDate()}`.slice(-2); // pad with leading zero
-    const hours = `0${date.getHours()}`.slice(-2); // pad with leading zero
-    const minutes = `0${date.getMinutes()}`.slice(-2); // pad with leading zero
+    const month = `0${date.getMonth() + 1}`.slice(-2); 
+    const day = `0${date.getDate()}`.slice(-2); 
+    const hours = `0${date.getHours()}`.slice(-2); 
+    const minutes = `0${date.getMinutes()}`.slice(-2); 
     return `${year}-${month}-${day}T${hours}:${minutes}`;
   }
   const handleChange = (e) => {

@@ -15,11 +15,11 @@ const PageSport = () => {
   const [showModal, setShowModal] = useState(false);
 
   let api = helpHttp();
-  let url = process.env.REACT_APP_PROD_API_URL || "http://localhost:9000/api/v1/sports";
+  let url = process.env.REACT_APP_PROD_API_URL || "http://localhost:9000/api/v1";
   
   useEffect(() => {
     setLoading(true);
-    helpHttp().get(url).then((res) => {
+    helpHttp().get(`${url}/sports`).then((res) => {
       if(!res.err){
         setDB(res);
         setError(null)
@@ -40,7 +40,7 @@ const PageSport = () => {
         }
     }
 
-    api.post(url,options).then(res => {
+    api.post(`${url}/sports`,options).then(res => {
       console.log(res);
       if(!res.err){
       setDB([...db, res]);
@@ -59,7 +59,7 @@ const PageSport = () => {
           "content-type":"application/json"
         }
     }
-    let endpoint =`${url}/${data._id}`;
+    let endpoint =`${url}/sports/${data._id}`;
     api.put(endpoint,options).then(res => {
       console.log(res);
       if(!res.err){
@@ -83,7 +83,7 @@ const PageSport = () => {
             "content-type":"application/json"
           }
       }
-      let endpoint =`${url}/${_id}`;
+      let endpoint =`${url}/sports/${_id}`;
       api.del(endpoint,options).then(res => {
         console.log(res);
         if(!res.err){
